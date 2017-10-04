@@ -42,6 +42,9 @@ toJSON <- function(x) {
 #' @param package name of the package, defaults to the widget name.
 #' @export
 getDependency <- function(name, package = name){
+  if (is.null(package)) {
+     package = name
+  }
   config = sprintf("htmlwidgets/%s.yaml", name)
   jsfile = sprintf("htmlwidgets/%s.js", name)
 

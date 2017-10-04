@@ -46,7 +46,7 @@ getDependency <- function(name, package = name){
   jsfile = sprintf("htmlwidgets/%s.js", name)
 
   config = yaml::yaml.load_file(
-    system.file(config, package = package)
+    substitute(system.file(config, package = p), list(p = as.name(package)))
   )
   widgetDep <- lapply(config$dependencies, function(l){
     l$src = system.file(l$src, package = package)
